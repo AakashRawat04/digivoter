@@ -2,7 +2,7 @@ import { routes } from "@/routes/routes";
 import { errorHandler, handle404Error } from "@/utils/errors";
 import consola from "consola";
 import cors from "cors";
-import express from "express";
+import express, { type RequestHandler } from "express";
 import rateLimit from "express-rate-limit";
 import process from "node:process";
 import { mw as requestIp } from "request-ip";
@@ -45,10 +45,10 @@ app.get("/healthcheck", (_req, res) => {
 	});
 });
 
-app.use("/api", routes);
+
+app.use("/api", routes());
 
 app.all("*", handle404Error);
-
 app.use(errorHandler);
 
 app.listen(PORT, () => {

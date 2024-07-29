@@ -3,7 +3,7 @@ import { SupabaseService } from "@/supabase.service";
 import { BackendError } from "@/utils/errors";
 import type { Request, Response } from "express";
 
-export const signupUser = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response) => {
 	const { email, password, metaData } = signupSchema.parse(req.body);
 	const { data, error } = await SupabaseService.getSupabase().auth.signUp({
 		email,

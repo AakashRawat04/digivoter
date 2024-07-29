@@ -4,7 +4,9 @@
   "description": "digivoter backend source code ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts",
+    "build": "esbuild src/server.ts --bundle --outfile=build/server.js --platform=node --format=esm --packages=external",
+    "start": "node build/server.js"
   },
   "dependencies": {
     "consola": "^3.2.3",
@@ -25,7 +27,7 @@
     "@types/node": "^20.11.16",
     "@types/request-ip": "^0.0.41",
     "esbuild": "^0.20.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },

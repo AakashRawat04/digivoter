@@ -8,5 +8,5 @@ export const loginSchema = z.object({
 export const signupSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(8),
-	metaData: z.object({}),
+	metaData: z.object({}).default({}),
 });
