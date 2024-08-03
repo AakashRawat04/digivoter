@@ -1,5 +1,5 @@
 import { loginSchema, signupSchema } from "@/schema/auth";
-import { SupabaseService } from "@/supabase.service";
+import { SupabaseService } from "@/services/supabase";
 import { BackendError } from "@/utils/errors";
 import type { Request, Response } from "express";
 
