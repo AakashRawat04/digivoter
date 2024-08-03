@@ -1,0 +1,1 @@
+export const SUPABASE_BUCKET_BASE = "https://jxrgwpqpfjdocvmezzow.supabase.co/storage/v1/object/public/"

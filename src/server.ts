@@ -8,6 +8,7 @@ import process from "node:process";
 import { mw as requestIp } from "request-ip";
 import "./utils/env";
 import { logger } from "./utils/logger";
+import multer from "multer";
 
 const { PORT } = process.env;
 

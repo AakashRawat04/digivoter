@@ -5,6 +5,7 @@ import { ZodError } from "zod";
 type HttpErrorCode =
 	| "BAD_REQUEST"
 	| "UNAUTHORIZED"
+	| "NOT_MODIFIED"
 	| "NOT_FOUND"
 	| "METHOD_NOT_ALLOWED"
 	| "NOT_ACCEPTABLE"
@@ -24,12 +25,15 @@ type BackendErrorCode =
 	| "VALIDATION_ERROR"
 	| "USER_NOT_FOUND"
 	| "INVALID_PASSWORD"
-	| "AUTH_ERROR";
+	| "AUTH_ERROR"
+	| "UPLOAD_ERROR";
 
 type ErrorCode = HttpErrorCode | BackendErrorCode | "INTERNAL_ERROR";
 
 export function getStatusFromErrorCode(code: ErrorCode): number {
 	switch (code) {
+		case "NOT_MODIFIED":
+			return 304;
 		case "BAD_REQUEST":
 		case "AUTH_ERROR":
 		case "VALIDATION_ERROR":
@@ -67,6 +71,7 @@ export function getStatusFromErrorCode(code: ErrorCode): number {
 		case "TEAPOT":
 			return 418; // I'm a teapot
 		case "INTERNAL_ERROR":
+		case "UPLOAD_ERROR":
 			return 500;
 		default:
 			return 500;
